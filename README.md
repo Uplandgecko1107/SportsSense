@@ -89,6 +89,6 @@ predicted with an X% probability do indeed occur X% of the time._
 
 
 
-#Team
+#Team:
 Anshuman Polusta,
 Krish kumar
