@@ -1,0 +1,5 @@
+pywin32
+sklearn_json
+pynput
+file_read_backwards
+matplotlib
