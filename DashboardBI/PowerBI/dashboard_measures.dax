@@ -1,0 +1,105 @@
+// Key Performance Indicators (KPIs)
+
+Total Rounds = COUNTROWS('CSGOData')
+
+Prediction Accuracy = 
+DIVIDE(
+    SUMX('CSGOData', 'CSGOData'[prediction_accuracy]),
+    COUNTROWS('CSGOData'),
+    0
+) * 100
+
+Average CT Win Probability = AVERAGE('CSGOData'[ct_win_probability])
+
+Average T Win Probability = AVERAGE('CSGOData'[t_win_probability])
+
+High Confidence Predictions = 
+CALCULATE(
+    COUNTROWS('CSGOData'),
+    'CSGOData'[prediction_confidence] > 70
+)
+
+Close Rounds = 
+CALCULATE(
+    COUNTROWS('CSGOData'),
+    'CSGOData'[probability_difference] < 20
+)
+
+// Time-based Measures
+
+Rounds This Hour = 
+CALCULATE(
+    COUNTROWS('CSGOData'),
+    'CSGOData'[timestamp] >= NOW() - TIME(1,0,0)
+)
+
+Rounds Today = 
+CALCULATE(
+    COUNTROWS('CSGOData'),
+    'CSGOData'[date] = TODAY()
+)
+
+// Map Performance
+
+Most Played Map = 
+CALCULATE(
+    VALUES('CSGOData'[map_name]),
+    TOPN(1, VALUES('CSGOData'[map_name]), COUNTROWS('CSGOData'))
+)
+
+CT Win Rate by Map = 
+DIVIDE(
+    CALCULATE(COUNTROWS('CSGOData'), 'CSGOData'[actual_winner] = "CT"),
+    COUNTROWS('CSGOData'),
+    0
+) * 100
+
+// Prediction Quality Measures
+
+Overconfident Predictions = 
+CALCULATE(
+    COUNTROWS('CSGOData'),
+    AND(
+        'CSGOData'[prediction_confidence] > 80,
+        'CSGOData'[prediction_accuracy] = 0
+    )
+)
+
+Underconfident Predictions = 
+CALCULATE(
+    COUNTROWS('CSGOData'),
+    AND(
+        'CSGOData'[prediction_confidence] < 60,
+        'CSGOData'[prediction_accuracy] = 1
+    )
+)
+
+// Dynamic Titles
+
+Dashboard Title = 
+"CS:GO Predictor Dashboard - " & 
+FORMAT(NOW(), "MMM DD, YYYY HH:MM")
+
+Accuracy Status = 
+VAR AccuracyRate = [Prediction Accuracy]
+RETURN
+    SWITCH(
+        TRUE(),
+        AccuracyRate >= 80, "🟢 Excellent",
+        AccuracyRate >= 70, "🟡 Good", 
+        AccuracyRate >= 60, "🟠 Fair",
+        "🔴 Needs Improvement"
+    )
+
+// Conditional Formatting
+
+Accuracy Color = 
+VAR AccuracyRate = [Prediction Accuracy]
+RETURN
+    SWITCH(
+        TRUE(),
+        AccuracyRate >= 80, "#00FF00",
+        AccuracyRate >= 70, "#FFFF00",
+        AccuracyRate >= 60, "#FFA500",
+        "#FF0000"
+    )
