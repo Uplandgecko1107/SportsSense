@@ -1,5 +1,5 @@
 <p align="center">
-<a href="https://github.com/d-roho/CSGOPredictor/blob/main/READMEDocs/Intro.gif">
+<a href="https://github.com/Uplandgecko1107/SportsSense/blob/main/READMEDocs/Intro.gif">
 <img src="./READMEDocs/Intro.gif"/>
 </a>
 </p>
@@ -7,7 +7,6 @@
 ![]()
 
 # Quick Start Guide
-## [CLICK ON ME FOR VIDEO GUIDE!](https://www.youtube.com/watch?v=ndZOmqIZvSs)
 1. Install Python 3 (preferably latest version)
    * Install `wheel` package - `pip install wheel` if not installed
 2. Clone repo
@@ -52,7 +51,7 @@ Run `gui.py` in another terminal while `MainApp.py` is running to display dynami
 ### ***CSGOPredictor is a python program that generates live round winner predictions of CS:GO Competitive matches.***
 
 ## How it works
-![Workflow](https://github.com/d-roho/CSGOPredictor/blob/main/READMEDocs/workflow.png)
+![Workflow](https://github.com/Uplandgecko1107/SportsSense/blob/main/READMEDocs/workflow.png)
 
 ### A simple 3 step process
 
@@ -82,15 +81,14 @@ predicted with an X% probability do indeed occur X% of the time._
 
 *As the primary function of this program is to generate accurate probabilities, callibration is the key metric for success (not accuracy)* 
 
-![Calibration Plot](https://github.com/d-roho/CSGOPredictor/blob/main/READMEDocs/CalibrationPlot.png)
+![Calibration Plot](https://github.com/Uplandgecko1107/SportsSense/blob/main/READMEDocs/CalibrationPlot.png)
 
 ### Accuracy:
 
-![Confusion Matrix](https://github.com/d-roho/CSGOPredictor/blob/main/READMEDocs/ConfusionMatrix.png)
+![Confusion Matrix](https://github.com/Uplandgecko1107/SportsSense/blob/main/READMEDocs/ConfusionMatrix.png)
 
 
 
 #Team
 Anshuman Polusta
 Krish kumar
-
