@@ -90,5 +90,5 @@ predicted with an X% probability do indeed occur X% of the time._
 
 
 #Team
-Anshuman Polusta
+Anshuman Polusta,
 Krish kumar
